@@ -1,0 +1,25 @@
+{
+  "name": "task-manager-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Task Manager Monorepo",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "start": "turbo start",
+    "clean": "turbo clean && rm -rf node_modules",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "turbo": "^2.1.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "^19.2.0",
+      "react-dom": "^19.2.0"
+    }
+  }
+}
