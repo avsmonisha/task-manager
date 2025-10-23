@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Task Manager Monorepo
 
 A modern monorepo setup for the Task Manager application using **pnpm workspaces** and **Turborepo**.
@@ -191,3 +192,7 @@ pnpm clean
 ## 📄 License
 
 MIT
+=======
+# task-manager
+Deployed Task Manager App on Vercel with Supabase backend and automated CI/CD using GitHub Actions.
+>>>>>>> 0d5a19bff600ca29b95968db95649475af2f90f8
