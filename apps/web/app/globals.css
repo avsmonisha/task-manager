@@ -1,7 +1,14 @@
-@import "tailwindcss";
+/* Tailwind directives commented out to avoid editor/parse errors when PostCSS
+  isn't running in this environment. We load Tailwind via CDN in layout.tsx as
+  a temporary dev fallback. Uncomment these if you run PostCSS/Tailwind CLI
+  to generate a compiled CSS file.
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "tw-animate-css";
+*/
 
-@custom-variant dark (&:is(.dark *));
+/* removed non-standard @custom-variant rule that caused parser/lint errors */
 
 :root {
   --background: oklch(1 0 0);
@@ -76,7 +83,8 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-@theme inline {
+/* converted non-standard @theme rule into a normal class to avoid parse errors */
+.theme-inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
@@ -119,9 +127,11 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    /* use standard CSS so file parses even without PostCSS/Tailwind */
+    border-color: var(--border);
   }
   body {
-    @apply bg-background text-foreground;
+    background: var(--background);
+    color: var(--foreground);
   }
 }

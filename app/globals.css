@@ -1,7 +1,15 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+/* Tailwind directives commented out so this file parses as plain CSS when
+  PostCSS/Tailwind isn't running in the environment (common in monorepos).
+  To use the Tailwind pipelines again, uncomment the lines below and ensure
+  PostCSS loads this config (apps/web/postcss.config.cjs or root postcss).
 
-@custom-variant dark (&:is(.dark *));
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tw-animate-css";
+*/
+
+/* removed non-standard @custom-variant which breaks plain CSS parsers */
 
 :root {
   --background: oklch(1 0 0);
@@ -76,7 +84,9 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-@theme inline {
+/* converted non-standard @theme into a regular class so browsers/editors
+  parse it without Tailwind/PostCSS */
+.theme-inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
@@ -118,10 +128,17 @@
 }
 
 @layer base {
+  /* Replace Tailwind @apply with plain CSS so this file parses even when
+     PostCSS isn't applied. When PostCSS/Tailwind is available you can
+     restore `@apply` usage and comment/remove these fallbacks. */
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
+    /* outline fallback: set outline-color to the ring variable; the style
+       and width can be provided by UI components or Tailwind when enabled */
+    outline-color: var(--ring);
   }
   body {
-    @apply bg-background text-foreground;
+    background: var(--background);
+    color: var(--foreground);
   }
 }

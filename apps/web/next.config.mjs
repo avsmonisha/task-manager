@@ -1,3 +1,11 @@
+import withTM from 'next-transpile-modules'
+
+const withTranspile = withTM([
+  '@task-manager/ui',
+  '@task-manager/utils',
+  '@task-manager/types',
+])
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -9,6 +17,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    serverActions: true,
+  },
 }
 
-export default nextConfig
+export default withTranspile(nextConfig)
