@@ -16,17 +16,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2   # ✅ FIXED (v4 doesn’t exist)
-        with:
-          version: 9
-          run_install: false         # ✅ Ensures it doesn't auto-install dependencies yet
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
+
+      - name: Install pnpm manually
+        run: npm install -g pnpm
+
+      - name: Verify pnpm installation
+        run: pnpm --version
 
       - name: Install dependencies
         run: pnpm install
