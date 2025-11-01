@@ -18,12 +18,20 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          pnpm-lockfile-path: pnpm-lock.yaml
           cache: 'pnpm'
+
+      - name: Print environment for debugging
+        run: |
+          echo "PATH is: $PATH"
+          which pnpm
 
       - name: Install dependencies
         run: pnpm install
